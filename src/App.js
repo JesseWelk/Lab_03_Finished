@@ -34,6 +34,8 @@ export default function App() {
       return countries.sort((a, b) => a.population - b.population);
     } else if (order === ">") {
       return countries.sort((a, b) => b.population - a.population);
+    } else if (order === "shuffle") {
+      return countries.sort(() => Math.random() - 0.5);
     } else {
       return countries;
     }
