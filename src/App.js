@@ -10,6 +10,8 @@ export default function App() {
   function select(countries, selection) {
     if (selection === "all" || selection === "1") {
       return countries;
+    } else if (selection === ">1") {
+      return countries.filter((country) => country.population <= 100000000);
     } else if (selection === "100m") {
       return countries.filter((country) => country.population >= 100000000);
     } else if (selection === "200m") {
@@ -20,7 +22,7 @@ export default function App() {
       return countries.filter((country) => country.population >= 1000000000);
     } else {
       return countries.filter(
-        (country) => country.continent.toLowerCase() === selection
+        (country) => country.continent.toLowerCase() === selection,
       );
     }
   }
@@ -78,7 +80,7 @@ export default function App() {
             </optgroup>
 
             <optgroup label="by population">
-              <option value="1">less than 100M</option>
+              <option value=">1">less than 100M</option>
               <option value="100m">100M or more</option>
               <option value="200m">200M or more</option>
               <option value="500m">500M or more</option>
