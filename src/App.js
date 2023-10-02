@@ -1,7 +1,7 @@
-import { useState } from "react";
 import Country from "./components/Country";
-import "./styles.css";
 import data from "./data/countries.json";
+import { useState } from "react";
+import "./styles.css";
 
 export default function App() {
   const [filter, setFilterOption] = useState("all");
