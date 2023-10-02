@@ -4,8 +4,18 @@ import "./styles.css";
 import data from "./data/countries.json";
 
 export default function App() {
-  const [filter, setFilter] = useState("all");
-  const [sortOrder, setSortOrder] = useState(">");
+  const [filter, setFilterOption] = useState("all");
+  const [sortOrder, setSortOption] = useState(">");
+
+  function handleFilter(e) {
+    setFilterOption(e.target.value);
+  }
+
+  function handleSort(e) {
+    setSortOption(e.target.value);
+  }
+
+  const selected = select(data.countries, filter);
 
   function select(countries, selection) {
     if (selection === "all" || selection === "1") {
@@ -27,7 +37,7 @@ export default function App() {
     }
   }
 
-  const selected = select(data.countries, filter);
+  const sorted = sort(selected, sortOrder);
 
   function sort(countries, order) {
     if (order === "alpha") {
@@ -43,19 +53,9 @@ export default function App() {
     }
   }
 
-  const sorted = sort(selected, sortOrder);
-
-  function handleFilter(e) {
-    setFilter(e.target.value);
-  }
-
-  function handleSort(e) {
-    setSortOrder(e.target.value);
-  }
-
   return (
     <div className="App">
-      <h1>World's largest countries by population</h1>
+      <h1>World's Largest Countries By Population</h1>
       <div className="filters">
         <label>
           Sort By:
