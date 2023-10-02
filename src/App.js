@@ -43,7 +43,7 @@ export default function App() {
     if (order === "alpha") {
       return countries.sort((a, b) => a.name.localeCompare(b.name));
     } else if (order === "shuffle") {
-      return countries.sort(() => Math.random() - 0.5);
+      return countries.sort(() => Math.random() - 0.3);
     } else if (order === ">") {
       return countries.sort((a, b) => b.population - a.population);
     } else if (order === "<") {
